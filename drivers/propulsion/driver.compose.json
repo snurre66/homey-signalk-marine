@@ -1,0 +1,30 @@
+{
+  "id": "propulsion",
+  "$extends": [
+    "signalk_base"
+  ],
+  "name": {
+    "en": "Propulsion & Engine"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "measure_engine_rpm",
+    "measure_temperature",
+    "measure_oil_pressure",
+    "measure_engine_hours",
+    "measure_fuel_rate",
+    "alarm_generic"
+  ],
+  "capabilitiesOptions": {
+    "measure_temperature": {
+      "title": {
+        "en": "Coolant Temp"
+      }
+    },
+    "alarm_generic": {
+      "title": {
+        "en": "Engine Alarm"
+      }
+    }
+  }
+}

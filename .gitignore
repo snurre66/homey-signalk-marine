@@ -1,0 +1,12 @@
+node_modules/
+.homeybuild/
+.npm/
+.gemini/
+.agents/
+.android/
+.gradle/
+.bashrc
+.bash_logout
+.profile
+*.log
+.DS_Store

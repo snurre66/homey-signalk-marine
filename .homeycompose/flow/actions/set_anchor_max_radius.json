@@ -1,0 +1,24 @@
+{
+  "id": "set_anchor_max_radius",
+  "title": {
+    "en": "Set Anchor Watch maximum swing radius"
+  },
+  "titleFormatted": {
+    "en": "Set Anchor Watch max radius to [[max_radius]] m"
+  },
+  "hint": {
+    "en": "Updates the Anchor Drift Watch maximum swing radius in meters via Signal K PUT / anchor plugin."
+  },
+  "args": [
+    {
+      "name": "max_radius",
+      "type": "number",
+      "title": {
+        "en": "Max Swing Radius (m)"
+      },
+      "min": 5,
+      "max": 1000,
+      "step": 1
+    }
+  ]
+}

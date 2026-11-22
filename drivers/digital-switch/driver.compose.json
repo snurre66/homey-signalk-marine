@@ -1,0 +1,14 @@
+{
+  "id": "digital-switch",
+  "$extends": [
+    "signalk_base"
+  ],
+  "name": {
+    "en": "Digital Switch & Relay"
+  },
+  "class": "socket",
+  "capabilities": [
+    "onoff",
+    "dim"
+  ]
+}

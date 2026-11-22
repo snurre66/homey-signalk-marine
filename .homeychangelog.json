@@ -1,0 +1,5 @@
+{
+  "1.0.0": {
+    "en": "Initial release of Signal K Marine for Homey Pro with modular Vessel & Anchor Watch, Electrical Bank (Homey Energy), Fluid Tank, Digital Switch, Propulsion, and Custom Path Sensor drivers, plus bidirectional Signal K Flow automation."
+  }
+}

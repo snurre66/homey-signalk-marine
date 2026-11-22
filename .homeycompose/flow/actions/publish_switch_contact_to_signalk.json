@@ -1,0 +1,35 @@
+{
+  "id": "publish_switch_contact_to_signalk",
+  "title": {
+    "en": "Publish switch or contact state to Signal K"
+  },
+  "titleFormatted": {
+    "en": "Publish state [[state]] to Signal K path [[path]]"
+  },
+  "hint": {
+    "en": "Publishes a Homey switch, relay, or hatch/door contact boolean state to Signal K."
+  },
+  "args": [
+    {
+      "name": "path",
+      "type": "autocomplete",
+      "title": {
+        "en": "Signal K Path"
+      },
+      "placeholder": {
+        "en": "electrical.switches.dieselHeater.state"
+      }
+    },
+    {
+      "name": "state",
+      "type": "dropdown",
+      "title": {
+        "en": "State"
+      },
+      "values": [
+        { "id": "true", "title": { "en": "On / Open (true)" } },
+        { "id": "false", "title": { "en": "Off / Closed (false)" } }
+      ]
+    }
+  ]
+}

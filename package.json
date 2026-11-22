@@ -1,0 +1,31 @@
+{
+  "name": "com.signalk.marine",
+  "version": "1.0.0",
+  "description": "Homey Pro Smart Boat Integration for OpenPlotter (Signal K)",
+  "main": "app.js",
+  "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run test:unit",
+    "test:unit": "node --experimental-strip-types --test 'test/unit/*.test.ts'",
+    "test:e2e": "node --test 'test/e2e/*.test.mjs'",
+    "validate": "homey app validate --level publish",
+    "compose": "homey app build"
+  },
+  "dependencies": {
+    "uuid": "^9.0.1",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/homey": "npm:homey-apps-sdk-v3-types@^1.8.4",
+    "@types/node": "^22.15.0",
+    "@types/uuid": "^9.0.8",
+    "@types/ws": "^8.18.0",
+    "homey": "^4.6.3",
+    "homey-lib": "^2.54.0",
+    "typescript": "^5.8.3"
+  }
+}

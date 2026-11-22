@@ -1,0 +1,29 @@
+{
+  "id": "fluid-tank",
+  "$extends": [
+    "signalk_base"
+  ],
+  "name": {
+    "en": "Fluid Tank Monitor"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "measure_tank_level",
+    "measure_tank_volume",
+    "meter_water",
+    "alarm_generic",
+    "alarm_water"
+  ],
+  "capabilitiesOptions": {
+    "alarm_generic": {
+      "title": {
+        "en": "Tank Level Alarm"
+      }
+    },
+    "alarm_water": {
+      "title": {
+        "en": "Holding Tank High Alarm"
+      }
+    }
+  }
+}

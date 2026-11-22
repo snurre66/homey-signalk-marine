@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Tank Volume"
+  },
+  "units": {
+    "en": "L"
+  },
+  "decimals": 1,
+  "min": 0,
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true
+}

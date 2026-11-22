@@ -1,0 +1,24 @@
+{
+  "id": "arm_anchor_watch",
+  "title": {
+    "en": "Drop anchor & arm Anchor Watch"
+  },
+  "titleFormatted": {
+    "en": "Arm Anchor Watch with max radius [[max_radius]] m"
+  },
+  "hint": {
+    "en": "Drops anchor at the vessel's current GPS position and arms Anchor Drift Watch with the specified maximum swing radius."
+  },
+  "args": [
+    {
+      "name": "max_radius",
+      "type": "number",
+      "title": {
+        "en": "Max Swing Radius (m)"
+      },
+      "min": 5,
+      "max": 1000,
+      "step": 1
+    }
+  ]
+}

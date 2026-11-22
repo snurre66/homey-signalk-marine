@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Engine Hours"
+  },
+  "units": {
+    "en": "h"
+  },
+  "decimals": 1,
+  "min": 0,
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true
+}

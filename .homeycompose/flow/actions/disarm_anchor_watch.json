@@ -1,0 +1,9 @@
+{
+  "id": "disarm_anchor_watch",
+  "title": {
+    "en": "Raise anchor & disarm Anchor Watch"
+  },
+  "hint": {
+    "en": "Raises the anchor in Signal K and disarms Homey Anchor Drift Watch."
+  }
+}

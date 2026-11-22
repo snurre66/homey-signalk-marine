@@ -1,0 +1,16 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Course Over Ground"
+  },
+  "units": {
+    "en": "°"
+  },
+  "decimals": 0,
+  "min": 0,
+  "max": 360,
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true
+}

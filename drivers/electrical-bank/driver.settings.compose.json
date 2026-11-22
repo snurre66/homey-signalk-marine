@@ -1,0 +1,123 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Signal K Server Connection"
+    },
+    "children": [
+      {
+        "id": "host",
+        "type": "text",
+        "label": {
+          "en": "Server Host / IP"
+        },
+        "value": "openplotter.local"
+      },
+      {
+        "id": "port",
+        "type": "number",
+        "label": {
+          "en": "Server Port"
+        },
+        "value": 3000,
+        "min": 1,
+        "max": 65535
+      },
+      {
+        "id": "useTls",
+        "type": "checkbox",
+        "label": {
+          "en": "Use HTTPS / WSS (TLS)"
+        },
+        "value": false
+      },
+      {
+        "id": "allowSelfSigned",
+        "type": "checkbox",
+        "label": {
+          "en": "Allow Self-Signed TLS Certificates"
+        },
+        "value": true
+      },
+      {
+        "id": "token",
+        "type": "password",
+        "label": {
+          "en": "Signal K JWT Bearer Token"
+        },
+        "value": ""
+      },
+      {
+        "id": "throttleTier",
+        "type": "dropdown",
+        "label": {
+          "en": "Update Throttling Tier"
+        },
+        "value": "slow",
+        "values": [
+          {
+            "id": "fast",
+            "label": {
+              "en": "Fast (200 ms - Alarms & Mode Changes)"
+            }
+          },
+          {
+            "id": "medium",
+            "label": {
+              "en": "Medium (2 s - Balanced)"
+            }
+          },
+          {
+            "id": "slow",
+            "label": {
+              "en": "Slow (5 s - Batteries, Solar & Chargers)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sourceFilter",
+        "type": "text",
+        "label": {
+          "en": "Optional Signal K $source Filter"
+        },
+        "value": ""
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Battery Alarm Thresholds"
+    },
+    "children": [
+      {
+        "id": "lowSocThreshold",
+        "type": "number",
+        "label": {
+          "en": "Low State of Charge Alarm Threshold (%)"
+        },
+        "units": {
+          "en": "%"
+        },
+        "value": 20,
+        "min": 0,
+        "max": 100
+      },
+      {
+        "id": "lowVoltageThreshold",
+        "type": "number",
+        "label": {
+          "en": "Low Battery Voltage Alarm Threshold (V)"
+        },
+        "units": {
+          "en": "V"
+        },
+        "value": 11.8,
+        "min": 5,
+        "max": 60,
+        "step": 0.1
+      }
+    ]
+  }
+]

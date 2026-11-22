@@ -1,0 +1,48 @@
+{
+  "id": "publish_notification_alarm",
+  "title": {
+    "en": "Publish Signal K notification alarm"
+  },
+  "titleFormatted": {
+    "en": "Publish [[state]] notification on [[path]] with message [[message]]"
+  },
+  "hint": {
+    "en": "Publishes or clears a Signal K notification alarm (normal, alert, warn, alarm, or emergency)."
+  },
+  "args": [
+    {
+      "name": "path",
+      "type": "autocomplete",
+      "title": {
+        "en": "Notification Path"
+      },
+      "placeholder": {
+        "en": "notifications.security.companionwayHatch"
+      }
+    },
+    {
+      "name": "state",
+      "type": "dropdown",
+      "title": {
+        "en": "Severity State"
+      },
+      "values": [
+        { "id": "normal", "title": { "en": "Normal (Clear)" } },
+        { "id": "alert", "title": { "en": "Alert" } },
+        { "id": "warn", "title": { "en": "Warning" } },
+        { "id": "alarm", "title": { "en": "Alarm" } },
+        { "id": "emergency", "title": { "en": "Emergency" } }
+      ]
+    },
+    {
+      "name": "message",
+      "type": "text",
+      "title": {
+        "en": "Message"
+      },
+      "placeholder": {
+        "en": "Companionway hatch opened"
+      }
+    }
+  ]
+}

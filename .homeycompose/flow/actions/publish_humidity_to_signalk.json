@@ -1,0 +1,41 @@
+{
+  "id": "publish_humidity_to_signalk",
+  "title": {
+    "en": "Publish cabin humidity (%) to Signal K"
+  },
+  "titleFormatted": {
+    "en": "Publish humidity [[humidity_pct]]% for zone [[zone]] to Signal K"
+  },
+  "hint": {
+    "en": "Converts relative humidity percentage (0..100%) to SI ratio (0..1) and publishes to environment.inside.<zone>.relativeHumidity."
+  },
+  "args": [
+    {
+      "name": "zone",
+      "type": "dropdown",
+      "title": {
+        "en": "Cabin Zone"
+      },
+      "values": [
+        { "id": "mainCabin", "title": { "en": "Main Cabin" } },
+        { "id": "saloon", "title": { "en": "Saloon" } },
+        { "id": "forwardCabin", "title": { "en": "Forward Cabin" } },
+        { "id": "aftCabin", "title": { "en": "Aft Cabin" } },
+        { "id": "galley", "title": { "en": "Galley" } },
+        { "id": "engineRoom", "title": { "en": "Engine Room" } },
+        { "id": "heads", "title": { "en": "Heads" } },
+        { "id": "lazarette", "title": { "en": "Lazarette" } }
+      ]
+    },
+    {
+      "name": "humidity_pct",
+      "type": "number",
+      "title": {
+        "en": "Relative Humidity (%)"
+      },
+      "min": 0,
+      "max": 100,
+      "step": 0.5
+    }
+  ]
+}

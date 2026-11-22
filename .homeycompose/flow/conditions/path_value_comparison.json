@@ -1,0 +1,47 @@
+{
+  "id": "path_value_comparison",
+  "title": {
+    "en": "Signal K path value satisfies comparison"
+  },
+  "titleFormatted": {
+    "en": "Signal K path [[path]] !{{is|is not}} [[operator]] [[value]]"
+  },
+  "hint": {
+    "en": "Compares the latest numeric value of a Signal K path against a threshold."
+  },
+  "args": [
+    {
+      "name": "path",
+      "type": "autocomplete",
+      "title": {
+        "en": "Signal K Path"
+      },
+      "placeholder": {
+        "en": "environment.wind.speedApparent"
+      }
+    },
+    {
+      "name": "operator",
+      "type": "dropdown",
+      "title": {
+        "en": "Operator"
+      },
+      "values": [
+        { "id": ">", "title": { "en": "greater than (>)" } },
+        { "id": ">=", "title": { "en": "greater than or equal (>=)" } },
+        { "id": "<", "title": { "en": "less than (<)" } },
+        { "id": "<=", "title": { "en": "less than or equal (<=)" } },
+        { "id": "==", "title": { "en": "equal to (==)" } },
+        { "id": "!=", "title": { "en": "not equal to (!=)" } }
+      ]
+    },
+    {
+      "name": "value",
+      "type": "number",
+      "title": {
+        "en": "Comparison Value"
+      },
+      "step": 0.1
+    }
+  ]
+}

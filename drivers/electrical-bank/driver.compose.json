@@ -1,0 +1,37 @@
+{
+  "id": "electrical-bank",
+  "$extends": [
+    "signalk_base"
+  ],
+  "name": {
+    "en": "Battery & Electrical Bank"
+  },
+  "class": "other",
+  "energy": {
+    "homeBattery": true,
+    "batteries": [
+      "INTERNAL"
+    ],
+    "meterPowerImportedCapability": "meter_power",
+    "meterPowerExportedCapability": "meter_power"
+  },
+  "capabilities": [
+    "measure_battery",
+    "measure_voltage",
+    "measure_current",
+    "measure_power",
+    "meter_power",
+    "measure_remaining_ah",
+    "measure_time_remaining",
+    "measure_temperature",
+    "alarm_battery",
+    "charger_inverter_mode"
+  ],
+  "capabilitiesOptions": {
+    "measure_temperature": {
+      "title": {
+        "en": "Battery Temp"
+      }
+    }
+  }
+}

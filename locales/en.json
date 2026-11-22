@@ -1,0 +1,19 @@
+{
+  "app": {
+    "title": "Signal K Marine",
+    "description": "Smart boat automation, anchor drift watch, and marine telemetry for OpenPlotter and Signal K."
+  },
+  "pairing": {
+    "connect_title": "Connect to Signal K Server",
+    "discovering": "Searching for OpenPlotter / Signal K Server via mDNS...",
+    "awaiting_approval": "Please approve the Homey Pro access request in your Signal K Admin UI (Security -> Access Requests).",
+    "connected": "Connected to Signal K Server",
+    "error_unreachable": "Could not reach Signal K Server at the specified host and port.",
+    "error_auth_denied": "Access request was denied by the Signal K administrator."
+  },
+  "errors": {
+    "safety_boundary": "Operation blocked by marine safety boundary: autopilot, course navigation, and propulsion paths are strictly read-only.",
+    "server_unavailable": "Signal K Server is currently unreachable on the boat network.",
+    "auth_required": "Authentication required — please use Repair Device to request a new Signal K token."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "battery_soc_below_threshold",
+  "title": {
+    "en": "Battery SOC dropped below threshold"
+  },
+  "titleFormatted": {
+    "en": "Battery [[bank_id]] SOC dropped below [[threshold]]%"
+  },
+  "hint": {
+    "en": "Triggers with hysteresis when a battery bank's State of Charge drops below the selected threshold."
+  },
+  "tokens": [
+    {
+      "name": "bank_name",
+      "type": "string",
+      "title": {
+        "en": "Battery Bank"
+      },
+      "example": {
+        "en": "house"
+      }
+    },
+    {
+      "name": "soc",
+      "type": "number",
+      "title": {
+        "en": "State of Charge (%)"
+      },
+      "example": 48
+    },
+    {
+      "name": "voltage",
+      "type": "number",
+      "title": {
+        "en": "Voltage (V)"
+      },
+      "example": 12.4
+    }
+  ],
+  "args": [
+    {
+      "name": "bank_id",
+      "type": "text",
+      "title": {
+        "en": "Battery Bank ID"
+      },
+      "placeholder": {
+        "en": "house (leave empty for any)"
+      }
+    },
+    {
+      "name": "threshold",
+      "type": "number",
+      "title": {
+        "en": "SOC Threshold (%)"
+      },
+      "min": 1,
+      "max": 100,
+      "step": 1
+    }
+  ]
+}

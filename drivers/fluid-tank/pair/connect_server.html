@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connect to Signal K Server</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 16px;
+      color: #1e293b;
+      background: #f8fafc;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 0 0 8px 0;
+      color: #0b4f6c;
+    }
+    p.hint {
+      font-size: 13px;
+      color: #475569;
+      margin: 0 0 12px 0;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      margin-top: 10px;
+    }
+    input[type="text"], input[type="number"], input[type="password"], select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    button {
+      width: 100%;
+      padding: 11px 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+    .btn-primary {
+      background: #0b4f6c;
+      color: #ffffff;
+    }
+    .btn-secondary {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+    .status {
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      display: none;
+    }
+    .status.info { display: block; background: #e0f2fe; color: #0369a1; }
+    .status.error { display: block; background: #fee2e2; color: #b91c1c; }
+    .status.success { display: block; background: #dcfce7; color: #15803d; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Connect to OpenPlotter / Signal K</h2>
+    <p class="hint">Select a discovered Signal K server or enter the host and port manually.</p>
+
+    <label for="discoveredSelect">Discovered Servers (mDNS)</label>
+    <select id="discoveredSelect">
+      <option value="">-- Manual configuration --</option>
+    </select>
+    <button type="button" id="discoverBtn" class="btn-secondary">Refresh mDNS Discovery</button>
+
+    <label for="host">Server Host / IP</label>
+    <input type="text" id="host" value="openplotter.local" placeholder="openplotter.local or 192.168.1.50" />
+
+    <label for="port">Server Port</label>
+    <input type="number" id="port" value="3000" min="1" max="65535" />
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="useTls" />
+      <label for="useTls" style="margin: 0; font-weight: 500;">Use HTTPS / WSS (TLS)</label>
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="allowSelfSigned" checked />
+      <label for="allowSelfSigned" style="margin: 0; font-weight: 500;">Allow Self-Signed TLS Certificates</label>
+    </div>
+
+    <label for="token">JWT Bearer Token (optional — leave blank to request access)</label>
+    <input type="password" id="token" placeholder="Paste JWT token or leave empty for Access Request" />
+
+    <button type="button" id="connectBtn" class="btn-primary">Connect &amp; Discover Devices</button>
+    <div id="statusBox" class="status"></div>
+  </div>
+
+  <script>
+    (function () {
+      var discoveredSelect = document.getElementById('discoveredSelect');
+      var discoverBtn = document.getElementById('discoverBtn');
+      var connectBtn = document.getElementById('connectBtn');
+      var hostInput = document.getElementById('host');
+      var portInput = document.getElementById('port');
+      var useTlsInput = document.getElementById('useTls');
+      var allowSelfSignedInput = document.getElementById('allowSelfSigned');
+      var tokenInput = document.getElementById('token');
+      var statusBox = document.getElementById('statusBox');
+      var discoveredMap = {};
+
+      function setStatus(type, msg) {
+        statusBox.className = 'status ' + type;
+        statusBox.textContent = msg;
+      }
+
+      function refreshDiscovery() {
+        Homey.emit('discover_servers', {}, function (err, servers) {
+          if (err) {
+            setStatus('error', err.message || String(err));
+            return;
+          }
+          discoveredSelect.innerHTML = '<option value="">-- Manual configuration --</option>';
+          discoveredMap = {};
+          if (Array.isArray(servers) && servers.length > 0) {
+            servers.forEach(function (srv) {
+              var id = srv.id || (srv.address + ':' + srv.port);
+              discoveredMap[id] = srv;
+              var opt = document.createElement('option');
+              opt.value = id;
+              opt.textContent = (srv.name || 'Signal K Server') + ' (' + srv.address + ':' + srv.port + ')';
+              discoveredSelect.appendChild(opt);
+            });
+            var first = servers[0];
+            discoveredSelect.value = first.id || (first.address + ':' + first.port);
+            hostInput.value = first.address || first.host || hostInput.value;
+            portInput.value = first.port || 3000;
+          }
+        });
+      }
+
+      discoveredSelect.addEventListener('change', function () {
+        var srv = discoveredMap[discoveredSelect.value];
+        if (srv) {
+          hostInput.value = srv.address || srv.host || 'openplotter.local';
+          portInput.value = srv.port || 3000;
+        }
+      });
+
+      discoverBtn.addEventListener('click', refreshDiscovery);
+
+      connectBtn.addEventListener('click', function () {
+        var host = hostInput.value.trim();
+        var port = Number(portInput.value) || 3000;
+        if (!host) {
+          setStatus('error', 'Please enter a valid Signal K host or IP address.');
+          return;
+        }
+        connectBtn.disabled = true;
+        setStatus('info', 'Connecting to Signal K server and verifying access...');
+
+        Homey.emit('connect_server', {
+          host: host,
+          port: port,
+          useTls: Boolean(useTlsInput.checked),
+          allowSelfSigned: Boolean(allowSelfSignedInput.checked),
+          token: tokenInput.value.trim() || undefined,
+          requestAccessIfNeeded: true
+        }, function (err, result) {
+          connectBtn.disabled = false;
+          if (err) {
+            setStatus('error', err.message || String(err));
+            return;
+          }
+          if (result && result.state === 'PENDING') {
+            setStatus('info', 'Approval pending in Signal K Admin UI (Security -> Access Requests). Waiting...');
+            Homey.emit('poll_access_request', result, function (pollErr, pollRes) {
+              if (pollErr) {
+                setStatus('error', pollErr.message || String(pollErr));
+                return;
+              }
+              if (pollRes && pollRes.ok) {
+                setStatus('success', 'Connected! Loading devices...');
+                Homey.showView('list_devices');
+              } else {
+                setStatus('error', (pollRes && pollRes.message) || 'Access request was not approved.');
+              }
+            });
+            return;
+          }
+          if (result && result.ok) {
+            setStatus('success', 'Connected! Loading devices...');
+            Homey.showView('list_devices');
+          } else {
+            setStatus('error', (result && result.message) || 'Failed to connect to Signal K server.');
+          }
+        });
+      });
+
+      refreshDiscovery();
+    })();
+  </script>
+</body>
+</html>

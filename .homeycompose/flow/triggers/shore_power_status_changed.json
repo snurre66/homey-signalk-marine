@@ -1,0 +1,44 @@
+{
+  "id": "shore_power_status_changed",
+  "title": {
+    "en": "Shore power status changed"
+  },
+  "titleFormatted": {
+    "en": "Shore power became [[status]]"
+  },
+  "hint": {
+    "en": "Triggers when shore power AC input connects or disconnects."
+  },
+  "tokens": [
+    {
+      "name": "connected",
+      "type": "boolean",
+      "title": {
+        "en": "Shore Power Connected"
+      },
+      "example": true
+    },
+    {
+      "name": "power",
+      "type": "number",
+      "title": {
+        "en": "AC Power (W)"
+      },
+      "example": 850
+    }
+  ],
+  "args": [
+    {
+      "name": "status",
+      "type": "dropdown",
+      "title": {
+        "en": "Shore Power State"
+      },
+      "values": [
+        { "id": "any", "title": { "en": "Connected or Disconnected" } },
+        { "id": "connected", "title": { "en": "Connected" } },
+        { "id": "disconnected", "title": { "en": "Disconnected" } }
+      ]
+    }
+  ]
+}

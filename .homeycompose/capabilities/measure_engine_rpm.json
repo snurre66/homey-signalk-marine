@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Engine Speed"
+  },
+  "units": {
+    "en": "RPM"
+  },
+  "decimals": 0,
+  "min": 0,
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true
+}

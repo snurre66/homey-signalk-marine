@@ -1,0 +1,17 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Anchor Max Radius"
+  },
+  "units": {
+    "en": "m"
+  },
+  "decimals": 0,
+  "min": 5,
+  "max": 500,
+  "step": 1,
+  "getable": true,
+  "setable": true,
+  "uiComponent": "sensor",
+  "insights": true
+}

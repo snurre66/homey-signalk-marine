@@ -1,0 +1,15 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Anchor Distance"
+  },
+  "units": {
+    "en": "m"
+  },
+  "decimals": 1,
+  "min": 0,
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true
+}

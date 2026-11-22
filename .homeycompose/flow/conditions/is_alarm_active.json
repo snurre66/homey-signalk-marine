@@ -1,0 +1,24 @@
+{
+  "id": "is_alarm_active",
+  "title": {
+    "en": "Signal K alarm !{{is|is not}} active"
+  },
+  "titleFormatted": {
+    "en": "Signal K alarm [[path]] !{{is|is not}} active"
+  },
+  "hint": {
+    "en": "Checks whether a Signal K notification path currently has an active alert, warn, alarm, or emergency state."
+  },
+  "args": [
+    {
+      "name": "path",
+      "type": "autocomplete",
+      "title": {
+        "en": "Notification Path"
+      },
+      "placeholder": {
+        "en": "notifications.bilge.main"
+      }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Autopilot State"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "values": [
+    {
+      "id": "standby",
+      "title": {
+        "en": "Standby"
+      }
+    },
+    {
+      "id": "auto",
+      "title": {
+        "en": "Auto (Compass)"
+      }
+    },
+    {
+      "id": "wind",
+      "title": {
+        "en": "Wind Vane"
+      }
+    },
+    {
+      "id": "route",
+      "title": {
+        "en": "Route / Track"
+      }
+    },
+    {
+      "id": "off",
+      "title": {
+        "en": "Off"
+      }
+    }
+  ]
+}

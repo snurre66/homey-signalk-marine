@@ -1,0 +1,158 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Signal K Server Connection"
+    },
+    "children": [
+      {
+        "id": "host",
+        "type": "text",
+        "label": {
+          "en": "Server Host / IP"
+        },
+        "value": "openplotter.local"
+      },
+      {
+        "id": "port",
+        "type": "number",
+        "label": {
+          "en": "Server Port"
+        },
+        "value": 3000,
+        "min": 1,
+        "max": 65535
+      },
+      {
+        "id": "useTls",
+        "type": "checkbox",
+        "label": {
+          "en": "Use HTTPS / WSS (TLS)"
+        },
+        "value": false
+      },
+      {
+        "id": "allowSelfSigned",
+        "type": "checkbox",
+        "label": {
+          "en": "Allow Self-Signed TLS Certificates"
+        },
+        "value": true
+      },
+      {
+        "id": "token",
+        "type": "password",
+        "label": {
+          "en": "Signal K JWT Bearer Token"
+        },
+        "value": ""
+      },
+      {
+        "id": "throttleTier",
+        "type": "dropdown",
+        "label": {
+          "en": "Update Throttling Tier"
+        },
+        "value": "medium",
+        "values": [
+          {
+            "id": "fast",
+            "label": {
+              "en": "Fast (200 ms - Alarms & Switches)"
+            }
+          },
+          {
+            "id": "medium",
+            "label": {
+              "en": "Medium (2 s - Navigation & Wind)"
+            }
+          },
+          {
+            "id": "slow",
+            "label": {
+              "en": "Slow (5 s - Batteries, Tanks & Environment)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sourceFilter",
+        "type": "text",
+        "label": {
+          "en": "Optional Signal K $source Filter"
+        },
+        "value": ""
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Navigation & Anchor Watch"
+    },
+    "children": [
+      {
+        "id": "speed_unit",
+        "type": "dropdown",
+        "label": {
+          "en": "Speed Display Unit"
+        },
+        "value": "kn",
+        "values": [
+          {
+            "id": "kn",
+            "label": {
+              "en": "Knots (kn)"
+            }
+          },
+          {
+            "id": "m/s",
+            "label": {
+              "en": "Meters per Second (m/s)"
+            }
+          },
+          {
+            "id": "km/h",
+            "label": {
+              "en": "Kilometers per Hour (km/h)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "anchor_max_radius",
+        "type": "number",
+        "label": {
+          "en": "Anchor Watch Max Swing Radius"
+        },
+        "units": {
+          "en": "m"
+        },
+        "value": 40,
+        "min": 5,
+        "max": 500
+      },
+      {
+        "id": "anchor_rode_length",
+        "type": "number",
+        "label": {
+          "en": "Anchor Chain / Rode Length"
+        },
+        "units": {
+          "en": "m"
+        },
+        "value": 30,
+        "min": 0,
+        "max": 500
+      },
+      {
+        "id": "anchor_haversine_fallback",
+        "type": "checkbox",
+        "label": {
+          "en": "Enable Homey Haversine GPS Drift Fallback"
+        },
+        "value": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,56 @@
+{
+  "id": "path_value_updated",
+  "title": {
+    "en": "Signal K path value updated"
+  },
+  "titleFormatted": {
+    "en": "Signal K path [[path]] updated"
+  },
+  "hint": {
+    "en": "Triggers when a specific Signal K path receives a new telemetry value."
+  },
+  "tokens": [
+    {
+      "name": "path",
+      "type": "string",
+      "title": {
+        "en": "Signal K Path"
+      },
+      "example": {
+        "en": "environment.wind.speedApparent"
+      }
+    },
+    {
+      "name": "value",
+      "type": "string",
+      "title": {
+        "en": "Value"
+      },
+      "example": {
+        "en": "12.5"
+      }
+    },
+    {
+      "name": "source",
+      "type": "string",
+      "title": {
+        "en": "Source"
+      },
+      "example": {
+        "en": "n2k-on-ve.can-device.115"
+      }
+    }
+  ],
+  "args": [
+    {
+      "name": "path",
+      "type": "autocomplete",
+      "title": {
+        "en": "Signal K Path"
+      },
+      "placeholder": {
+        "en": "environment.wind.speedApparent"
+      }
+    }
+  ]
+}

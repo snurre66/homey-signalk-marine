@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reconnect Signal K Server</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      margin: 0;
+      padding: 16px;
+      color: #1e293b;
+      background: #f8fafc;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px;
+    }
+    h2 {
+      font-size: 18px;
+      margin: 0 0 8px 0;
+      color: #0b4f6c;
+    }
+    p.hint {
+      font-size: 13px;
+      color: #475569;
+      margin: 0 0 12px 0;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      margin-top: 10px;
+    }
+    input[type="text"], input[type="number"], input[type="password"] {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    button {
+      width: 100%;
+      padding: 11px 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn-primary { background: #0b4f6c; color: #ffffff; }
+    .btn-secondary { background: #e2e8f0; color: #0f172a; }
+    .status {
+      margin-top: 12px;
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      display: none;
+    }
+    .status.info { display: block; background: #e0f2fe; color: #0369a1; }
+    .status.error { display: block; background: #fee2e2; color: #b91c1c; }
+    .status.success { display: block; background: #dcfce7; color: #15803d; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Repair Signal K Connection</h2>
+    <p class="hint">Update server address or request a fresh Signal K access token.</p>
+
+    <label for="host">Server Host / IP</label>
+    <input type="text" id="host" value="openplotter.local" />
+
+    <label for="port">Server Port</label>
+    <input type="number" id="port" value="3000" min="1" max="65535" />
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="useTls" />
+      <label for="useTls" style="margin: 0; font-weight: 500;">Use HTTPS / WSS (TLS)</label>
+    </div>
+
+    <label for="token">New JWT Bearer Token (optional)</label>
+    <input type="password" id="token" placeholder="Paste token or click Request New Access" />
+
+    <button type="button" id="saveTokenBtn" class="btn-primary">Reconnect &amp; Save Credentials</button>
+    <button type="button" id="requestAccessBtn" class="btn-secondary">Request New Access in Signal K</button>
+    <div id="statusBox" class="status"></div>
+  </div>
+
+  <script>
+    (function () {
+      var hostInput = document.getElementById('host');
+      var portInput = document.getElementById('port');
+      var useTlsInput = document.getElementById('useTls');
+      var tokenInput = document.getElementById('token');
+      var saveTokenBtn = document.getElementById('saveTokenBtn');
+      var requestAccessBtn = document.getElementById('requestAccessBtn');
+      var statusBox = document.getElementById('statusBox');
+
+      function setStatus(type, msg) {
+        statusBox.className = 'status ' + type;
+        statusBox.textContent = msg;
+      }
+
+      Homey.emit('get_current_config', {}, function (err, cfg) {
+        if (!err && cfg) {
+          if (cfg.host) hostInput.value = cfg.host;
+          if (cfg.port) portInput.value = cfg.port;
+          useTlsInput.checked = Boolean(cfg.useTls);
+        }
+      });
+
+      saveTokenBtn.addEventListener('click', function () {
+        setStatus('info', 'Reconnecting to Signal K server...');
+        Homey.emit('reconnect_server', {
+          host: hostInput.value.trim(),
+          port: Number(portInput.value) || 3000,
+          useTls: Boolean(useTlsInput.checked),
+          token: tokenInput.value.trim()
+        }, function (err, res) {
+          if (err) {
+            setStatus('error', err.message || String(err));
+            return;
+          }
+          if (res && res.ok) {
+            setStatus('success', 'Connection repaired successfully.');
+            Homey.done();
+          } else {
+            setStatus('error', (res && res.message) || 'Reconnect failed.');
+          }
+        });
+      });
+
+      requestAccessBtn.addEventListener('click', function () {
+        setStatus('info', 'Submitting new access request to Signal K...');
+        Homey.emit('request_access', {
+          host: hostInput.value.trim(),
+          port: Number(portInput.value) || 3000,
+          useTls: Boolean(useTlsInput.checked)
+        }, function (err, res) {
+          if (err) {
+            setStatus('error', err.message || String(err));
+            return;
+          }
+          if (res && res.state === 'PENDING') {
+            setStatus('info', 'Please approve the access request in Signal K Admin UI...');
+            Homey.emit('poll_access_request', {
+              host: hostInput.value.trim(),
+              port: Number(portInput.value) || 3000,
+              useTls: Boolean(useTlsInput.checked),
+              href: res.href,
+              requestId: res.requestId
+            }, function (pErr, pRes) {
+              if (pErr) {
+                setStatus('error', pErr.message || String(pErr));
+                return;
+              }
+              if (pRes && (pRes.state === 'APPROVED' || pRes.ok)) {
+                setStatus('success', 'Access approved and device repaired.');
+                Homey.done();
+              } else {
+                setStatus('error', (pRes && pRes.message) || 'Access request denied or expired.');
+              }
+            });
+          } else if (res && res.token) {
+            setStatus('success', 'Access approved immediately.');
+            Homey.done();
+          } else {
+            setStatus('info', (res && res.message) || 'Read-only access enabled.');
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

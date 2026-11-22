@@ -1,0 +1,104 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Signal K Server Connection"
+    },
+    "children": [
+      {
+        "id": "host",
+        "type": "text",
+        "label": {
+          "en": "Server Host / IP"
+        },
+        "value": "openplotter.local"
+      },
+      {
+        "id": "port",
+        "type": "number",
+        "label": {
+          "en": "Server Port"
+        },
+        "value": 3000,
+        "min": 1,
+        "max": 65535
+      },
+      {
+        "id": "useTls",
+        "type": "checkbox",
+        "label": {
+          "en": "Use HTTPS / WSS (TLS)"
+        },
+        "value": false
+      },
+      {
+        "id": "allowSelfSigned",
+        "type": "checkbox",
+        "label": {
+          "en": "Allow Self-Signed TLS Certificates"
+        },
+        "value": true
+      },
+      {
+        "id": "token",
+        "type": "password",
+        "label": {
+          "en": "Signal K JWT Bearer Token"
+        },
+        "value": ""
+      },
+      {
+        "id": "throttleTier",
+        "type": "dropdown",
+        "label": {
+          "en": "Update Throttling Tier"
+        },
+        "value": "medium",
+        "values": [
+          {
+            "id": "fast",
+            "label": {
+              "en": "Fast (200 ms - Alarms & Switches)"
+            }
+          },
+          {
+            "id": "medium",
+            "label": {
+              "en": "Medium (2 s - Navigation & Engine)"
+            }
+          },
+          {
+            "id": "slow",
+            "label": {
+              "en": "Slow (5 s - Runtime & Environment)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sourceFilter",
+        "type": "text",
+        "label": {
+          "en": "Optional Signal K $source Filter"
+        },
+        "value": ""
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Propulsion Telemetry (Read-Only)"
+    },
+    "children": [
+      {
+        "id": "engineId",
+        "type": "text",
+        "label": {
+          "en": "Signal K Engine Instance ID"
+        },
+        "value": "port"
+      }
+    ]
+  }
+]

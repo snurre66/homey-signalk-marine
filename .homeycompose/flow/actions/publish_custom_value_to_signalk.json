@@ -1,0 +1,34 @@
+{
+  "id": "publish_custom_value_to_signalk",
+  "title": {
+    "en": "Publish custom path value to Signal K"
+  },
+  "titleFormatted": {
+    "en": "Publish value [[value]] to Signal K path [[path]]"
+  },
+  "hint": {
+    "en": "Publishes an arbitrary value to a Signal K dot-path via the WebSocket delta stream."
+  },
+  "args": [
+    {
+      "name": "path",
+      "type": "autocomplete",
+      "title": {
+        "en": "Signal K Path"
+      },
+      "placeholder": {
+        "en": "environment.inside.mainCabin.temperature"
+      }
+    },
+    {
+      "name": "value",
+      "type": "text",
+      "title": {
+        "en": "Value (number, boolean, string, or JSON)"
+      },
+      "placeholder": {
+        "en": "294.65"
+      }
+    }
+  ]
+}

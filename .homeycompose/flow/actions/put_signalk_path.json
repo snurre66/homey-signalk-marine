@@ -1,0 +1,34 @@
+{
+  "id": "put_signalk_path",
+  "title": {
+    "en": "Send PUT control command to Signal K path"
+  },
+  "titleFormatted": {
+    "en": "PUT value [[value]] to Signal K path [[path]]"
+  },
+  "hint": {
+    "en": "Sends an authenticated PUT command to a writable Signal K path (switches, chargers, inverters, anchor watch). Safety-critical steering, propulsion, and course paths are strictly blocked."
+  },
+  "args": [
+    {
+      "name": "path",
+      "type": "autocomplete",
+      "title": {
+        "en": "Writable Signal K Path"
+      },
+      "placeholder": {
+        "en": "electrical.switches.anchorLight.state"
+      }
+    },
+    {
+      "name": "value",
+      "type": "text",
+      "title": {
+        "en": "Value (boolean, number, string, or JSON)"
+      },
+      "placeholder": {
+        "en": "true"
+      }
+    }
+  ]
+}

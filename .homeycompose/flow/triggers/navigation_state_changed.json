@@ -1,0 +1,53 @@
+{
+  "id": "navigation_state_changed",
+  "title": {
+    "en": "Vessel navigation state changed"
+  },
+  "titleFormatted": {
+    "en": "Vessel navigation state changed to [[state]]"
+  },
+  "hint": {
+    "en": "Triggers when Signal K navigation.state transitions (moored, anchored, motoring, sailing)."
+  },
+  "tokens": [
+    {
+      "name": "state",
+      "type": "string",
+      "title": {
+        "en": "New Navigation State"
+      },
+      "example": {
+        "en": "anchored"
+      }
+    },
+    {
+      "name": "previous_state",
+      "type": "string",
+      "title": {
+        "en": "Previous Navigation State"
+      },
+      "example": {
+        "en": "motoring"
+      }
+    }
+  ],
+  "args": [
+    {
+      "name": "state",
+      "type": "dropdown",
+      "title": {
+        "en": "Target State"
+      },
+      "values": [
+        { "id": "any", "title": { "en": "Any State" } },
+        { "id": "moored", "title": { "en": "Moored" } },
+        { "id": "anchored", "title": { "en": "Anchored" } },
+        { "id": "motoring", "title": { "en": "Motoring" } },
+        { "id": "sailing", "title": { "en": "Sailing" } },
+        { "id": "drifting", "title": { "en": "Drifting" } },
+        { "id": "towing", "title": { "en": "Towing" } },
+        { "id": "unknown", "title": { "en": "Unknown" } }
+      ]
+    }
+  ]
+}

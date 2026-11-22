@@ -1,0 +1,35 @@
+{
+  "id": "anchor_drag_alarm",
+  "title": {
+    "en": "Anchor drag alarm triggered"
+  },
+  "hint": {
+    "en": "Triggers when the vessel drifts beyond the configured anchor swing radius."
+  },
+  "tokens": [
+    {
+      "name": "distance",
+      "type": "number",
+      "title": {
+        "en": "Current Distance (m)"
+      },
+      "example": 45.2
+    },
+    {
+      "name": "max_radius",
+      "type": "number",
+      "title": {
+        "en": "Max Radius (m)"
+      },
+      "example": 40
+    },
+    {
+      "name": "bearing",
+      "type": "number",
+      "title": {
+        "en": "Bearing (° True)"
+      },
+      "example": 182
+    }
+  ]
+}

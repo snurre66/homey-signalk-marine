@@ -1,0 +1,69 @@
+{
+  "id": "signalk_notification_raised",
+  "title": {
+    "en": "Signal K alarm notification raised"
+  },
+  "titleFormatted": {
+    "en": "Signal K notification raised for prefix [[pathPrefix]] with minimum severity [[minState]]"
+  },
+  "hint": {
+    "en": "Triggers when Signal K emits a notification alarm (alert, warn, alarm, or emergency)."
+  },
+  "tokens": [
+    {
+      "name": "path",
+      "type": "string",
+      "title": {
+        "en": "Notification Path"
+      },
+      "example": {
+        "en": "notifications.bilge.main"
+      }
+    },
+    {
+      "name": "state",
+      "type": "string",
+      "title": {
+        "en": "Notification State"
+      },
+      "example": {
+        "en": "alarm"
+      }
+    },
+    {
+      "name": "message",
+      "type": "string",
+      "title": {
+        "en": "Notification Message"
+      },
+      "example": {
+        "en": "High bilge water level detected"
+      }
+    }
+  ],
+  "args": [
+    {
+      "name": "pathPrefix",
+      "type": "text",
+      "title": {
+        "en": "Notification Path Prefix"
+      },
+      "placeholder": {
+        "en": "notifications. (leave empty for all)"
+      }
+    },
+    {
+      "name": "minState",
+      "type": "dropdown",
+      "title": {
+        "en": "Minimum Severity"
+      },
+      "values": [
+        { "id": "alert", "title": { "en": "Alert" } },
+        { "id": "warn", "title": { "en": "Warning" } },
+        { "id": "alarm", "title": { "en": "Alarm" } },
+        { "id": "emergency", "title": { "en": "Emergency" } }
+      ]
+    }
+  ]
+}

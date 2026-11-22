@@ -1,0 +1,44 @@
+{
+  "id": "vessel",
+  "$extends": [
+    "signalk_base"
+  ],
+  "name": {
+    "en": "Vessel & Anchor Watch"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "measure_sog",
+    "measure_stw",
+    "measure_cog",
+    "measure_heading",
+    "measure_depth",
+    "measure_wind_strength",
+    "measure_wind_angle",
+    "measure_pressure",
+    "measure_temperature",
+    "navigation_state",
+    "autopilot_state",
+    "onoff.anchor_armed",
+    "measure_anchor_distance",
+    "measure_anchor_radius",
+    "alarm_generic"
+  ],
+  "capabilitiesOptions": {
+    "onoff.anchor_armed": {
+      "title": {
+        "en": "Anchor Watch"
+      }
+    },
+    "alarm_generic": {
+      "title": {
+        "en": "Anchor Drag Alarm"
+      }
+    },
+    "measure_temperature": {
+      "title": {
+        "en": "Outside Temperature"
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Charger / Inverter Mode"
+  },
+  "getable": true,
+  "setable": true,
+  "uiComponent": "picker",
+  "values": [
+    {
+      "id": "on",
+      "title": {
+        "en": "On (Normal)"
+      }
+    },
+    {
+      "id": "charger_only",
+      "title": {
+        "en": "Charger Only"
+      }
+    },
+    {
+      "id": "inverter_only",
+      "title": {
+        "en": "Inverter Only"
+      }
+    },
+    {
+      "id": "eco",
+      "title": {
+        "en": "Eco / Load Shedding"
+      }
+    },
+    {
+      "id": "off",
+      "title": {
+        "en": "Off"
+      }
+    }
+  ]
+}

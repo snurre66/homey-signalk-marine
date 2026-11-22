@@ -1,0 +1,38 @@
+{
+  "id": "set_charger_inverter_mode",
+  "title": {
+    "en": "Set Charger / Inverter operating mode"
+  },
+  "titleFormatted": {
+    "en": "Set charger/inverter [[path]] mode to [[mode]]"
+  },
+  "hint": {
+    "en": "Sets the operating mode on a Victron MultiPlus/Quattro inverter or shore charger for battery load shedding."
+  },
+  "args": [
+    {
+      "name": "path",
+      "type": "autocomplete",
+      "title": {
+        "en": "Charger / Inverter Control Path"
+      },
+      "placeholder": {
+        "en": "electrical.inverters.0.inverterMode"
+      }
+    },
+    {
+      "name": "mode",
+      "type": "dropdown",
+      "title": {
+        "en": "Operating Mode"
+      },
+      "values": [
+        { "id": "on", "title": { "en": "On (Normal)" } },
+        { "id": "charger_only", "title": { "en": "Charger Only" } },
+        { "id": "inverter_only", "title": { "en": "Inverter Only" } },
+        { "id": "eco", "title": { "en": "Eco / Load Shedding" } },
+        { "id": "off", "title": { "en": "Off" } }
+      ]
+    }
+  ]
+}

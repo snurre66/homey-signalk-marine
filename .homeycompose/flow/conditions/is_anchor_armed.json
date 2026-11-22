@@ -1,0 +1,9 @@
+{
+  "id": "is_anchor_armed",
+  "title": {
+    "en": "Anchor watch !{{is|is not}} armed"
+  },
+  "hint": {
+    "en": "Checks whether the vessel's Anchor Drift Watch is currently armed."
+  }
+}

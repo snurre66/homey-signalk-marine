@@ -1,0 +1,53 @@
+{
+  "type": "enum",
+  "title": {
+    "en": "Navigation State"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "values": [
+    {
+      "id": "moored",
+      "title": {
+        "en": "Moored"
+      }
+    },
+    {
+      "id": "anchored",
+      "title": {
+        "en": "Anchored"
+      }
+    },
+    {
+      "id": "motoring",
+      "title": {
+        "en": "Motoring"
+      }
+    },
+    {
+      "id": "sailing",
+      "title": {
+        "en": "Sailing"
+      }
+    },
+    {
+      "id": "drifting",
+      "title": {
+        "en": "Drifting"
+      }
+    },
+    {
+      "id": "towing",
+      "title": {
+        "en": "Towing"
+      }
+    },
+    {
+      "id": "unknown",
+      "title": {
+        "en": "Unknown"
+      }
+    }
+  ]
+}

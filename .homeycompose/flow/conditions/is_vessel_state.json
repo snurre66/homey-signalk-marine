@@ -1,0 +1,30 @@
+{
+  "id": "is_vessel_state",
+  "title": {
+    "en": "Vessel state !{{is|is not}}"
+  },
+  "titleFormatted": {
+    "en": "Vessel state !{{is|is not}} [[state]]"
+  },
+  "hint": {
+    "en": "Checks the current Signal K navigation.state of the vessel."
+  },
+  "args": [
+    {
+      "name": "state",
+      "type": "dropdown",
+      "title": {
+        "en": "Navigation State"
+      },
+      "values": [
+        { "id": "moored", "title": { "en": "Moored" } },
+        { "id": "anchored", "title": { "en": "Anchored" } },
+        { "id": "motoring", "title": { "en": "Motoring" } },
+        { "id": "sailing", "title": { "en": "Sailing" } },
+        { "id": "drifting", "title": { "en": "Drifting" } },
+        { "id": "towing", "title": { "en": "Towing" } },
+        { "id": "unknown", "title": { "en": "Unknown" } }
+      ]
+    }
+  ]
+}

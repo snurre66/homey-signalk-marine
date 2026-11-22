@@ -1,0 +1,34 @@
+{
+  "id": "is_battery_soc_below",
+  "title": {
+    "en": "Battery SOC !{{is|is not}} below threshold"
+  },
+  "titleFormatted": {
+    "en": "Battery [[bank_id]] SOC !{{is|is not}} below [[threshold]]%"
+  },
+  "hint": {
+    "en": "Checks whether a battery bank's State of Charge (%) is below the specified threshold."
+  },
+  "args": [
+    {
+      "name": "bank_id",
+      "type": "text",
+      "title": {
+        "en": "Battery Bank ID"
+      },
+      "placeholder": {
+        "en": "house"
+      }
+    },
+    {
+      "name": "threshold",
+      "type": "number",
+      "title": {
+        "en": "Threshold (%)"
+      },
+      "min": 0,
+      "max": 100,
+      "step": 1
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "type": "group",
+    "label": {
+      "en": "Signal K Server Connection"
+    },
+    "children": [
+      {
+        "id": "host",
+        "type": "text",
+        "label": {
+          "en": "Server Host / IP"
+        },
+        "value": "openplotter.local"
+      },
+      {
+        "id": "port",
+        "type": "number",
+        "label": {
+          "en": "Server Port"
+        },
+        "value": 3000,
+        "min": 1,
+        "max": 65535
+      },
+      {
+        "id": "useTls",
+        "type": "checkbox",
+        "label": {
+          "en": "Use HTTPS / WSS (TLS)"
+        },
+        "value": false
+      },
+      {
+        "id": "allowSelfSigned",
+        "type": "checkbox",
+        "label": {
+          "en": "Allow Self-Signed TLS Certificates"
+        },
+        "value": true
+      },
+      {
+        "id": "token",
+        "type": "password",
+        "label": {
+          "en": "Signal K JWT Bearer Token"
+        },
+        "value": ""
+      },
+      {
+        "id": "throttleTier",
+        "type": "dropdown",
+        "label": {
+          "en": "Update Throttling Tier"
+        },
+        "value": "slow",
+        "values": [
+          {
+            "id": "fast",
+            "label": {
+              "en": "Fast (200 ms - Instant)"
+            }
+          },
+          {
+            "id": "medium",
+            "label": {
+              "en": "Medium (2 s - Balanced)"
+            }
+          },
+          {
+            "id": "slow",
+            "label": {
+              "en": "Slow (5 s - Fluid Tanks)"
+            }
+          }
+        ]
+      },
+      {
+        "id": "sourceFilter",
+        "type": "text",
+        "label": {
+          "en": "Optional Signal K $source Filter"
+        },
+        "value": ""
+      }
+    ]
+  },
+  {
+    "type": "group",
+    "label": {
+      "en": "Tank Capacity & Alarms"
+    },
+    "children": [
+      {
+        "id": "capacity_liters",
+        "type": "number",
+        "label": {
+          "en": "Tank Capacity (Liters)"
+        },
+        "units": {
+          "en": "L"
+        },
+        "value": 200,
+        "min": 0,
+        "max": 50000
+      },
+      {
+        "id": "alarmThresholdPercent",
+        "type": "number",
+        "label": {
+          "en": "Tank Alarm Threshold (%)"
+        },
+        "units": {
+          "en": "%"
+        },
+        "value": 15,
+        "min": 0,
+        "max": 100
+      }
+    ]
+  }
+]

@@ -1,0 +1,3 @@
+Signal K Marine integrates your OpenPlotter and Signal K boat server with Homey Pro over your onboard local network. Monitor live sailing instruments, water depth, wind, GPS anchor drift watch, Victron battery banks, solar MPPT chargers, fluid tanks, and engine telemetry directly from Homey dashboards and Homey Energy.
+
+Automate onboard comfort, energy management, and safety with Homey Flows. Control 12V digital switching relays, diesel heaters, and charger modes, trigger cabin and push alerts on anchor drag or bilge high-water notifications, and bridge Homey cabin temperature, humidity, pressure, and contact sensors back into Signal K.

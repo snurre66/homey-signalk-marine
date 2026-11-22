@@ -1,0 +1,29 @@
+{
+  "id": "custom-sensor",
+  "$extends": [
+    "signalk_base"
+  ],
+  "name": {
+    "en": "Custom Signal K Sensor"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "measure_temperature",
+    "measure_humidity",
+    "measure_pressure",
+    "alarm_generic",
+    "alarm_water"
+  ],
+  "capabilitiesOptions": {
+    "measure_temperature": {
+      "title": {
+        "en": "Temperature"
+      }
+    },
+    "alarm_water": {
+      "title": {
+        "en": "Bilge Water Alarm"
+      }
+    }
+  }
+}
