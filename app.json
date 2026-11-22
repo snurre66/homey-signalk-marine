@@ -30,10 +30,10 @@
     "email": "support@signalk-marine.local"
   },
   "support": "mailto:support@signalk-marine.local",
-  "homepage": "https://signalk.org",
-  "source": "https://github.com/signalk/signalk-server",
+  "homepage": "https://github.com/snurre66/homey-signalk-marine",
+  "source": "https://github.com/snurre66/homey-signalk-marine",
   "bugs": {
-    "url": "https://github.com/signalk/signalk-server/issues"
+    "url": "https://github.com/snurre66/homey-signalk-marine/issues"
   },
   "flow": {
     "triggers": [
